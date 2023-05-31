@@ -9,32 +9,66 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
 
             <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
+                Text="Choose an Army"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Ork</x:String>
+                        <x:String>Chaos</x:String>
+                        <x:String>Space Marine</x:String>
+                        <x:String>Imperium</x:String>
+                        <x:String>Tau</x:String>
+                        <x:String>Eldar</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+
+            <Label
+                Text="Total Points"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Total points input label"
+                FontSize="18"
                 HorizontalOptions="Center" />
 
+            <Entry
+                FontSize="14"
+                HorizontalTextAlignment="Center"
+                Placeholder="0"/>
+            <Label
+                Text="Fleet Name"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Fleet Name Input Label"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Entry
+                FontSize="14"
+                HorizontalTextAlignment="Center"
+                Placeholder="Ok Fleet"/>
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="20">
+                <Button
+                    x:Name="CounterBtn"
+                    Text="Load Previous"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Center" />
+
+                <Button
+                    Text="Start"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Center" />
+
+            </HorizontalStackLayout>
+            
         </VerticalStackLayout>
     </ScrollView>
 
