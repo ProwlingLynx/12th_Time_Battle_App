@@ -1,33 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="_12th_Time_Battle_App.MainPage">
+             x:Class="_12th_Time_Battle_App.MainPage"
+             xmlns:viewmodel="clr-namespace:_12th_Time_Battle_App.ViewModel"
+             x:DataType="viewmodel:FactionListViewModel">
 
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
-
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
 
             <Label
-                Text="Choose an Army"
-                SemanticProperties.HeadingLevel="Level2"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            Text="Choose a Faction"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Total points input label"
+            FontSize="18"
+            HorizontalOptions="Center" />
+            
+            <HorizontalStackLayout
+                HorizontalOptions="Center">
 
-            <ListView>
-                <ListView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Ork</x:String>
-                        <x:String>Chaos</x:String>
-                        <x:String>Space Marine</x:String>
-                        <x:String>Imperium</x:String>
-                        <x:String>Tau</x:String>
-                        <x:String>Eldar</x:String>
-                    </x:Array>
-                </ListView.ItemsSource>
+                <ListView
+                ItemsSource="{Binding Factions}"
+                SeparatorVisibility="Default"
+                >
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="viewmodel:Faction">
+                            <ViewCell>
+                                <Label Text="{Binding Name}" FontSize="14"></Label>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
             </ListView>
+            </HorizontalStackLayout>
 
             <Label
                 Text="Total Points"
@@ -58,13 +65,11 @@
                     x:Name="CounterBtn"
                     Text="Load Previous"
                     SemanticProperties.Hint="Counts the number of times you click"
-                    Clicked="OnCounterClicked"
                     HorizontalOptions="Center" />
 
                 <Button
                     Text="Start"
                     SemanticProperties.Hint="Counts the number of times you click"
-                    Clicked="OnCounterClicked"
                     HorizontalOptions="Center" />
 
             </HorizontalStackLayout>
